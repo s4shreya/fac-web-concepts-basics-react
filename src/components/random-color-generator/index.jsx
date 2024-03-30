@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./styles.css";
 
 const RandomColorGenerator = () => {
   const [typeOfColor, setTypeOfColor] = useState("hex");
   const [currentColor, setCurrentColor] = useState("#651223");
+
+  useEffect(() => {
+    handleCreateRandomColor();
+  }, [typeOfColor]);
 
   const createRandomNumberUtility = (length) =>
     Math.floor(Math.random() * length);
@@ -19,7 +23,7 @@ const RandomColorGenerator = () => {
     } else {
       let rgbColor = "rgb(";
       for (let i = 0; i < 3; i++)
-        rgbColor += createRandomNumberUtility(266) + ",";
+        rgbColor += createRandomNumberUtility(256) + ",";
       const updated = rgbColor.replace(/,$/, ")");
       setCurrentColor(updated);
     }
