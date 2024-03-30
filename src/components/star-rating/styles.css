@@ -38,13 +38,22 @@
   background: transparent;
 }
 
+.hover-over > svg {
+  color: green;
+}
+
+.hover-over > p {
+  font-weight: 800;
+  color: darkcyan;
+}
+
 .tagline {
   font-size: 30px;
   margin-top: 20px;
   color: rgb(218, 32, 159);
 }
 
-.star:hover {
+/* .star:hover {
   svg {
     color: green;
     cursor: pointer;
@@ -53,4 +62,4 @@
     font-weight: 800;
     color: darkcyan;
   }
-}
+} */
