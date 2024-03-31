@@ -40,11 +40,13 @@
 
 .hover-over > svg {
   color: green;
+  cursor: pointer;
 }
 
 .hover-over > p {
   font-weight: 800;
   color: darkcyan;
+  cursor: pointer;
 }
 
 .tagline {
@@ -52,14 +54,3 @@
   margin-top: 20px;
   color: rgb(218, 32, 159);
 }
-
-/* .star:hover {
-  svg {
-    color: green;
-    cursor: pointer;
-  }
-  p {
-    font-weight: 800;
-    color: darkcyan;
-  }
-} */
