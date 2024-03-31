@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import "./styles.css";
+import styles from "./styles.module.css";
 
 const ImageSlider = ({ url, limit }) => {
   const [images, setImages] = useState([]);
@@ -25,37 +25,37 @@ const ImageSlider = ({ url, limit }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       {loading ? (
         <div>Images are loading, Please wait....</div>
       ) : (
-        <>
-          <BsArrowLeftCircleFill className="arrow arrow-left" />
+        <div className={styles["image-slider"]}>
+          <BsArrowLeftCircleFill
+            className={`${styles.arrow} ${styles["arrow-left"]}`}
+          />
           {images &&
             images.length &&
-            images.map((image) => {
-              {
-                console.log(
-                  `loading is ${loading} images is ${JSON.stringify(
-                    image.download_url
-                  )}`
-                );
-              }
+            images.map((image) => 
               <img
                 key={image.id}
                 alt={image.author}
                 src={image.download_url}
-                className="current-image"
-              />;
-            })}
-          <BsArrowRightCircleFill className="arrow arrow-right" />
-          <span className="circle-indicators">
+                className={styles["current-image"]}
+              />
+            )}
+          <BsArrowRightCircleFill
+            className={`${styles.arrow} ${styles["arrow-right"]}`}
+          />
+          <span className={styles["circle-indicators"]}>
             {images.length &&
               images.map((_, index) => (
-                <button key={index} className="current-indicator"></button>
+                <button
+                  key={index}
+                  className={styles["current-indicator"]}
+                ></button>
               ))}
           </span>
-        </>
+        </div>
       )}
     </div>
   );
