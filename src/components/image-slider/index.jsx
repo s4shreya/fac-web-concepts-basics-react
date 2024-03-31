@@ -24,6 +24,13 @@ const ImageSlider = ({ url, limit }) => {
     if (url !== "") fetchImages(url);
   }, []);
 
+  const handleLeftSlide = () => {
+    if (currentSlide > 0) setCurrentSlide(prev => prev - 1);
+  };
+
+  const handleRightSlide = () =>
+    currentSlide < images.length - 1 ? setCurrentSlide(prev => prev + 1) : null;
+
   return (
     <div className={styles.container}>
       {loading ? (
@@ -31,19 +38,24 @@ const ImageSlider = ({ url, limit }) => {
       ) : (
         <div className={styles["image-slider"]}>
           <BsArrowLeftCircleFill
+            onClick={handleLeftSlide}
             className={`${styles.arrow} ${styles["arrow-left"]}`}
           />
           {images &&
             images.length &&
-            images.map((image) => 
-              <img
-                key={image.id}
-                alt={image.author}
-                src={image.download_url}
-                className={styles["current-image"]}
-              />
+            images.map(
+              (image) =>
+                image.id == currentSlide && (
+                  <img
+                    key={image.id}
+                    alt={image.author}
+                    src={image.download_url}
+                    className={styles["current-image"]}
+                  />
+                )
             )}
           <BsArrowRightCircleFill
+            onClick={handleRightSlide}
             className={`${styles.arrow} ${styles["arrow-right"]}`}
           />
           <span className={styles["circle-indicators"]}>
@@ -51,6 +63,7 @@ const ImageSlider = ({ url, limit }) => {
               images.map((_, index) => (
                 <button
                   key={index}
+                  onClick={() => setCurrentSlide(index)}
                   className={styles["current-indicator"]}
                 ></button>
               ))}
