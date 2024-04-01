@@ -24,12 +24,11 @@ const ImageSlider = ({ url, limit }) => {
     if (url !== "") fetchImages(url);
   }, []);
 
-  const handleLeftSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(prev => prev - 1);
-  };
+  const handleLeftSlide = () =>
+    setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
 
   const handleRightSlide = () =>
-    currentSlide < images.length - 1 ? setCurrentSlide(prev => prev + 1) : null;
+    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
 
   return (
     <div className={styles.container}>
@@ -45,7 +44,7 @@ const ImageSlider = ({ url, limit }) => {
             images.length &&
             images.map(
               (image) =>
-                image.id == currentSlide && (
+                parseInt(image.id) === currentSlide && (
                   <img
                     key={image.id}
                     alt={image.author}
@@ -65,6 +64,13 @@ const ImageSlider = ({ url, limit }) => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={styles["current-indicator"]}
+                  style={
+                    currentSlide === index
+                      ? {
+                          background: "green",
+                        }
+                      : null
+                  }
                 ></button>
               ))}
           </span>
