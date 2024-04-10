@@ -32,7 +32,7 @@ const LoadMoreData = () => {
         <div>
           {productsList.map((product) => (
             <div key={product.id}>
-              {product.id} " "{product.title}
+              {product.id}-----{product.title}
             </div>
           ))}{" "}
           <button onClick={handleLoadMoreProducts}>Load more products</button>
