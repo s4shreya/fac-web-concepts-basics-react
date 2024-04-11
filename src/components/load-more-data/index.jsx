@@ -21,7 +21,7 @@ const LoadMoreData = () => {
 
   const handleLoadMoreProducts = () => {
     setPageNo((prev) => prev + 1);
-    console.log(`page no is ${pageNo}`);
+    console.log(`page no is:${pageNo}`);
   };
 
   return (
