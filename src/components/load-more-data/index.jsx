@@ -21,21 +21,24 @@ const LoadMoreData = () => {
 
   const handleLoadMoreProducts = () => {
     setPageNo((prev) => prev + 1);
-    console.log(`page no is:${pageNo}`);
+    console.log(`page no is: ${pageNo}`);
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
         <div> Please wait... </div>
       ) : (
-        <div>
+        <div className={styles["product-container"]}>
           {productsList.map((product) => (
-            <div key={product.id}>
-              {product.id}-----{product.title}
+            <div key={product.id} className={styles.product}>
+              <img src={product.thumbnail} alt={product.title} />
+              <p>{product.title}</p>
             </div>
-          ))}{" "}
-          <button onClick={handleLoadMoreProducts}>Load more products</button>
+          ))}
+          <div className={styles["button-container"]}>
+            <button onClick={handleLoadMoreProducts}>Load more products</button>
+          </div>
         </div>
       )}
     </div>
