@@ -12,8 +12,9 @@ const LoadMoreData = () => {
     fetch(`https://dummyjson.com/products?limit=20&skip=${20 * pageNo}`)
       .then((response) => response.json())
       .then((data) => {
-        const productsArray = [...productsList, ...data.products];
-        setProductsList(productsArray);
+        // const productsArray = [...productsList, ...data.products];
+        setProductsList(prev => [...prev, ...data.products]);
+        // console.log(`products array ${JSON.stringify(productsList)}`)
         setLoading(false);
       })
       .catch((error) => console.log(`!!!error occurred: ${error.message}!!!`));
