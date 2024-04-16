@@ -14,7 +14,7 @@ const LoadMoreData = () => {
       .then((data) => {
         // const productsArray = [...productsList, ...data.products];
         setProductsList(prev => [...prev, ...data.products]);
-        console.log(`products array ${JSON.stringify(productsList)}`)
+        // console.log(`products array ${JSON.stringify(productsList)}`)
         setLoading(false);
       })
       .catch((error) => console.log(`!!!error occurred: ${error.message}!!!`));
